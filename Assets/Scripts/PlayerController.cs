@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour {
 	Rigidbody2D rigidbody2D;
 
 	public Text scoreLabel;
+	public Text resetLabel;
 
 	public bool isOnGround = false;
 	public bool dead = false;
 
 	// Use this for initialization
 	void Start () {
+		resetLabel.gameObject.SetActive(false);
 		rigidbody2D = GetComponent<Rigidbody2D>();
 		startTime = Time.time;
 	}
@@ -77,8 +79,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Die() {
-		Destroy(gameObject);
 		dead = true;
+		resetLabel.gameObject.SetActive(true);
+		Destroy(gameObject);
+
 
 	}
 	
